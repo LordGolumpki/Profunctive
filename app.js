@@ -54,17 +54,17 @@ app.get("/", (req, res) => {
 
 // Sign in route
 app.get("/signin", (req, res) => {
-    res.render("sign-in.ejs");
+    res.render("signIn.ejs");
 });
 
 // Sign up route
 app.get("/signup", (req, res) => {
-    res.render("sign-up.ejs");
+    res.render("signUp.ejs");
 });
 
 // User board route
-app.get("/:id/board", (req, res) => {
-    res.render("user-page.ejs");
+app.get("/board", (req, res) => {
+    res.render("userPage.ejs");
 });
 
 // Start listener
