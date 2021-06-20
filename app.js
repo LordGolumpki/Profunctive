@@ -1,6 +1,6 @@
 /**
  * Author: Ivan Jones
- * Version: 6/9/21
+ * Version: 6/19/21
  */
 
 // Import external modules
@@ -33,15 +33,15 @@ db.once("open", () => {
 // Start express app
 const app = express();
 
-// Enable creation of ejs partials
+// Enable ejs partials to be read
 app.engine("ejs", ejsMate);
-// Enable express to parse requests
+// Enable express to parse url requests
 app.use(express.urlencoded({ extended: true }));
-// Enable express to receive psuedo-requests
+// Enable express to receive pseudo-requests
 app.use(methodOverride("_method"));
-// Enable ejs templating
+// Enable ejs templates to be read
 app.set("view engine", "ejs");
-// Set the path for views
+// Set the path for views directory
 app.set("views", path.join(__dirname, "views"));
 // Serve static assets
 app.use(express.static(path.join(__dirname, "public")));
@@ -53,10 +53,19 @@ app.get("/", (req, res) => {
 });
 
 // Sign in route
+app.get("/signin", (req, res) => {
+    res.render("sign-in.ejs");
+});
 
 // Sign up route
+app.get("/signup", (req, res) => {
+    res.render("sign-up.ejs");
+});
 
 // User board route
+app.get("/:id/board", (req, res) => {
+    res.render("user-page.ejs");
+});
 
 // Start listener
 app.listen(port, () => {
