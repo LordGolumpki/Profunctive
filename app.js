@@ -41,11 +41,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 // Enable ejs templating
 app.set("view engine", "ejs");
-// Set the path for 
+// Set the path for views
 app.set("views", path.join(__dirname, "views"));
+// Serve static assets
+app.use(express.static(path.join(__dirname, "public")));
 
 // Define routes
 // Home route
+app.get("/", (req, res) => {
+    res.render("home.ejs");
+});
 
 // Sign in route
 
@@ -54,6 +59,6 @@ app.set("views", path.join(__dirname, "views"));
 // User board route
 
 // Start listener
-app.listen(8080, () => {
-    console.log("serving on port 3000");
+app.listen(port, () => {
+    console.log(`Serving on port: ${port}`);
 });
