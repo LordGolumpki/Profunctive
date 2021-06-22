@@ -1,0 +1,30 @@
+.boardname {
+    border-top: solid lightgray;
+    border-bottom: solid lightgray;
+}
+
+.boardnameinput {
+    border: none;
+}
+
+.board {
+    border-bottom: solid lightgray;
+    height: 1000px;
+    width: 100%;
+}
+
+.trashrow {
+    
+}
+
+.note {
+    border: solid lightgray;
+    border-radius: 12px;
+    height: 225px;
+    width: 205px;
+    margin: 25px;
+}
+
+main {
+    background-color: #fffcf2;
+}
