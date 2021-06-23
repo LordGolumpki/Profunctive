@@ -3,18 +3,24 @@
     border-bottom: solid lightgray;
 }
 
-.boardnameinput {
+.boardnameinput, .boardnameinput:focus {
     border: none;
+    width: 100%;
 }
 
 .board {
     border-bottom: solid lightgray;
-    height: 1000px;
+    height: 120vh;
     width: 100%;
 }
 
-.trashrow {
-    
+.trashbutton {
+    height: 100px;
+    width: 100px;
+    border-right: solid lightgray;
+    border-left: solid lightgray;
+    border-bottom: none;
+    border-top: none;
 }
 
 .note {
@@ -25,6 +31,12 @@
     margin: 25px;
 }
 
-main {
-    background-color: #fffcf2;
+.deletenote {
+    border: none;
+    background-color: white;
+    color: gray;
+}
+
+.snippetinput {
+    width: 150px;
 }
