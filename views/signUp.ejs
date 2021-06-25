@@ -5,12 +5,15 @@
                 Sign up
             </div>
             <div class="card-body">
-                <form action="/register" method="POST" class="validated-form" novalidate>
+                <form action="/signup" method="POST" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label class="form-label" for="username">Username</label>
                         <input class="form-control" type="text" id="username" name="username" required autofocus>
                         <div class="valid-feedback">
                             Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please choose a username.
                         </div>
                     </div>
                     <div class="mb-3">
@@ -19,12 +22,18 @@
                         <div class="valid-feedback">
                             Looks good!
                         </div>
+                        <div class="invalid-feedback">
+                            Please enter an email.
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="password">Password</label>
                         <input class="form-control" type="password" id="password" name="password" required>
                         <div class="valid-feedback">
                             Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please choose a password.
                         </div>
                     </div>
                     <div class="mb-3">
@@ -33,6 +42,9 @@
                             required>
                         <div class="valid-feedback">
                             Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please confirm your password.
                         </div>
                     </div>
                     <button class="btn btn-success btn-block">Register</button>

@@ -5,12 +5,15 @@
                 Sign in
             </div>
             <div class="card-body">
-                <form action="/signin" method="POST" class="validated-form" novalidate>
+                <form action="/signin" method="POST" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label class="form-label" for="username">Username</label>
                         <input class="form-control" type="text" id="username" name="username" autofocus required>
                         <div class="valid-feedback">
                             Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your username.
                         </div>
                     </div>
 
@@ -20,6 +23,9 @@
                         <div class="valid-feedback">
                             Looks good!
                         </div>
+                        <dov class="invalid-feedback">
+                            Please enter your password.
+                        </dov>
                     </div>
                     <button class="btn btn-success btn-block">Login</button>
                 </form>
