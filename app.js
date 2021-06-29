@@ -88,6 +88,15 @@ app.use((req, res, next) => {
     next();
 });
 
+// Temp location
+isSignedIn = (req, res, next) => {
+    if (!req.isAuthenticated()) {
+        req.flash('error', 'You must be signed in first!');
+        return res.redirect('/signin');
+    }
+    next();
+}
+
 // Define routes
 // Home route
 app.get("/", (req, res) => {
@@ -99,6 +108,8 @@ app.get("/signin", userController.renderSignIn);
 
 app.post("/signin", passport.authenticate("local", { failureFlash: true, failureRedirect: "/signin" }), userController.signIn);
 
+// Sign out route
+app.get("/signout", userController.signOut);
 
 // Sign up routes
 app.get("/signup", userController.renderSignUp);
@@ -106,7 +117,7 @@ app.get("/signup", userController.renderSignUp);
 app.post("/signup", catchAsync(userController.signUp));
 
 // User board route
-app.get("/board", (req, res) => {
+app.get("/board", isSignedIn, (req, res) => {
     res.render("userPage.ejs");
 });
 
