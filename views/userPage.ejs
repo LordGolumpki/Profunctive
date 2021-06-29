@@ -17,22 +17,24 @@
 <body>
     <%- include('./partials/navbar')%>
         <main>
-            <div class="boardname">
-                <input type="text" class="boardnameinput" placeholder="Untitled board">
-            </div>
-            <div class="board">
-                <div class="note">
-                    <button class="deletenote">&times;</button>
-                    <div class="snippet">
-                        <input type="text" class="snippetinput">
-                        <button class="deletesnippet">&times;</button>
-                    </div>
-                    <button class="addsnippet">+</button>
+            <%- include("./partials/flash") %>
+                <div class="boardname">
+                    <input type="text" class="boardnameinput" placeholder="Untitled board">
                 </div>
-            </div>
-            <div class="trashrow">
-                <button class="trashbutton"><img src="/resources/trashCan.svg" alt="" width="30" height="30"></button>
-            </div>
+                <div class="board">
+                    <div class="note">
+                        <button class="deletenote">&times;</button>
+                        <div class="snippet">
+                            <input type="text" class="snippetinput">
+                            <button class="deletesnippet">&times;</button>
+                        </div>
+                        <button class="addsnippet">+</button>
+                    </div>
+                </div>
+                <div class="trashrow">
+                    <button class="trashbutton"><img src="/resources/trashCan.svg" alt="" width="30"
+                            height="30"></button>
+                </div>
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"

@@ -32,7 +32,6 @@ module.exports.signIn = (req, res) => {
 
 module.exports.signOut = (req, res) => {
     req.logout();
-    req.session.destroy();
     req.flash("success", "Successfully signed out!");
-    res.redirect("/home");
+    res.redirect("/");
 }
