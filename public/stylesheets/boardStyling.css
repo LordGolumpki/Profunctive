@@ -3,9 +3,14 @@
     border-bottom: solid lightgray;
 }
 
+.boardnameinput:hover {
+    color: #98c1d9;
+}
+
 .boardnameinput, .boardnameinput:focus {
     border: none;
     width: 100%;
+    outline: none;
 }
 
 .board {
@@ -23,20 +28,64 @@
     border-top: none;
 }
 
+.trashbutton:hover {
+    background-color: darkgrey;
+}
+
 .note {
     border: solid lightgray;
     border-radius: 12px;
-    height: 225px;
+    min-height: 225px;
     width: 205px;
     margin: 25px;
 }
 
-.deletenote {
+.closenote {
+    position: relative;
+    left: 178px;
+}
+
+.notetop {
+    position: relative;
+    border-bottom: solid lightgray;
+    width: 204px;
+}
+
+.transparentbutton {
     border: none;
-    background-color: white;
+    background-color: transparent;
     color: gray;
+}
+
+.transparentbutton:hover {
+    color: #f95738;
+}
+
+.snippet {
+    margin-top: 5px;
+    margin-left: 23px;
+}
+
+.addnewsnippet {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 15px;
 }
 
 .snippetinput {
     width: 150px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom:solid gray;
+}
+
+.snippetinput:hover {
+    border-bottom: solid #98c1d9;
+}
+
+.snippetinput:focus {
+    border: solid #98c1d9;
+    border-radius: 2px;
+    outline: none;
 }
