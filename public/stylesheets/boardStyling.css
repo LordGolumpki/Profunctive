@@ -40,6 +40,23 @@
     margin: 25px;
 }
 
+.addnote {
+    background-color: white;
+    color: lightgray;
+    border: solid lightgray;
+    border-radius: 12px;
+    min-height: 225px;
+    width: 205px;
+    margin: 25px;
+    font-size: 5em;
+    font-weight: 100;
+}
+
+.addnote:hover {
+    color: gray;
+    border-color: gray;
+}
+
 .closenote {
     position: relative;
     left: 178px;

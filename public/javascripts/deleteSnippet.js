@@ -1,7 +1,7 @@
-const deleteButtons = document.querySelectorAll(".deletesnippet");
+const deleteSnippetButtons = document.querySelectorAll(".deletesnippet");
 
-deleteButtons.forEach((deleteButton) => {
-    deleteButton.addEventListener("click", (event) => {
-        deleteButton.parentElement.remove();
+deleteSnippetButtons.forEach((deleteSnippetButton) => {
+    deleteSnippetButton.addEventListener("click", (event) => {
+        deleteSnippetButton.parentElement.remove();
     });
 });
