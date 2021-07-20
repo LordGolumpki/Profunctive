@@ -21,6 +21,8 @@ addNoteButton.addEventListener("click", () => {
     // Create initial snippet in the note
     let snippet = document.createElement("div");
     snippet.classList.add("snippet");
+    snippet.classList.add("d-flex");
+    snippet.classList.add("align-content-start");
 
     let snippetInput = document.createElement("div");
     snippetInput.classList.add("snippetinput");
@@ -44,9 +46,13 @@ addNoteButton.addEventListener("click", () => {
     addNewSnippet.addEventListener("click", () => {
         let snippet = document.createElement("div");
         snippet.classList.add("snippet");
-        let snippetInput = document.createElement("input");
-        snippetInput.type = "text";
+        snippet.classList.add("d-flex");
+        snippet.classList.add("align-content-start");
+
+        let snippetInput = document.createElement("div");
         snippetInput.classList.add("snippetinput");
+        snippetInput.contentEditable = true;
+
         let deleteSnippet = document.createElement("button");
         deleteSnippet.classList.add("transparentbutton");
         deleteSnippet.classList.add("deletesnippet");
