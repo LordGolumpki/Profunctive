@@ -95,6 +95,11 @@
     border-left: none;
     border-right: none;
     border-bottom:solid gray;
+    display: inline-block;
+    min-height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    resize: none;
 }
 
 .snippetinput:hover {

@@ -1,10 +1,12 @@
 const addNoteButton = document.querySelector(".addnote");
 
 addNoteButton.addEventListener("click", () => {
+    // Create the note element
     let note = document.createElement("div");
     note.classList.add("note");
     note.classList.add("shadow");
 
+    // Create the top that contains the close button for the note
     let noteTop = document.createElement("div");
     noteTop.classList.add("notetop");
     let closeNote = document.createElement("button");
@@ -16,11 +18,14 @@ addNoteButton.addEventListener("click", () => {
     });
     noteTop.append(closeNote);
 
+    // Create initial snippet in the note
     let snippet = document.createElement("div");
     snippet.classList.add("snippet");
-    let snippetInput = document.createElement("input");
-    snippetInput.type = "text";
+
+    let snippetInput = document.createElement("div");
     snippetInput.classList.add("snippetinput");
+    snippetInput.contentEditable = true;
+
     let deleteSnippet = document.createElement("button");
     deleteSnippet.classList.add("transparentbutton");
     deleteSnippet.classList.add("deletesnippet");
@@ -31,6 +36,7 @@ addNoteButton.addEventListener("click", () => {
     snippet.append(snippetInput);
     snippet.append(deleteSnippet);
 
+    // Create button to add new snippets to the note
     let addNewSnippet = document.createElement("button");
     addNewSnippet.classList.add("transparentbutton");
     addNewSnippet.classList.add("addnewsnippet");
@@ -53,9 +59,11 @@ addNoteButton.addEventListener("click", () => {
         addNewSnippet.before(snippet);
     });
 
+    // Append newly created elements to the note
     note.append(noteTop);
     note.append(snippet);
     note.append(addNewSnippet);
 
+    // Insert the note before the note creation button
     addNoteButton.before(note);
 });

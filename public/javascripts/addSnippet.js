@@ -5,9 +5,9 @@ addButtons.forEach((addButton) => {
         let div = document.createElement("div");
         div.classList.add("snippet");
 
-        let input = document.createElement("input");
-        input.type = "text";
+        let input = document.createElement("div");
         input.classList.add("snippetinput");
+        input.contentEditable = true;
 
         let close = document.createElement("button");
         close.classList.add("transparentbutton");
