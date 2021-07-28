@@ -1,3 +1,5 @@
-const input = document.querySelector(".boardname");
+const boardNameInput = document.querySelector(".boardnameinput");
 
-input.addEventListener("submit",);
+boardNameInput.addEventListener("focusout", (event) => {
+    console.log(boardNameInput.value);
+});

@@ -18,7 +18,7 @@
         <main>
             <%- include("./partials/flash") %>
                 <div class="boardname">
-                    <input type="text" class="boardnameinput" placeholder="Untitled board">
+                    <input type="text" name="boardnametext" class="boardnameinput" placeholder="Untitled board">
                 </div>
 
                 <div class="board d-flex align-items-start flex-wrap">
@@ -36,6 +36,7 @@
         <script src="/javascripts/deleteSnippet.js"></script>
         <script src="/javascripts/addNote.js"></script>
         <script src="/javascripts/deleteNote.js"></script>
+        <script src="/javascripts/changeBoardName.js"></script>
 </body>
 
 <%- include('./partials/footer')%>
