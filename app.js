@@ -24,6 +24,7 @@ const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const UserModel = require("./models/userModel");
 const userController = require("./controllers/userController");
+const boardController = require("./controllers/boardController");
 
 // Define instance variables
 const port = process.env.PORT || 8080;
@@ -61,6 +62,8 @@ const app = express();
 app.engine("ejs", ejsMate);
 // Enable express to parse url requests
 app.use(express.urlencoded({ extended: true }));
+// Enable express to parse json requests
+app.use(express.json());
 // Enable express to receive pseudo-requests
 app.use(methodOverride("_method"));
 // Enable ejs templates to be read
@@ -116,10 +119,12 @@ app.get("/signup", userController.renderSignUp);
 
 app.post("/signup", catchAsync(userController.signUp));
 
-// User board route
-app.get("/board", isSignedIn, (req, res) => {
-    res.render("userPage.ejs");
-});
+// User board routes
+app.get("/board", isSignedIn, catchAsync(boardController.renderBoard));
+
+app.post("/board/:id/name", catchAsync(boardController.updateBoardName));
+
+app.post("/board/:id/note", catchAsync(boardController.updateNotes))
 
 // Start listener
 app.listen(port, () => {

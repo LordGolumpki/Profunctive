@@ -8,7 +8,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    boardName: String,
+    notes: [[String]]
 });
 
 // Apply passport password functionality to the schema

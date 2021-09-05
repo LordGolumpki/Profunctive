@@ -18,7 +18,8 @@
         <main>
             <%- include("./partials/flash") %>
                 <div class="boardname">
-                    <input type="text" name="boardnametext" class="boardnameinput" placeholder="Untitled board">
+                    <input type="text" name="boardnametext" class="boardnameinput" placeholder="Untitled board"
+                        value="<%-userInfo.boardName %>">
                 </div>
 
                 <div class="board d-flex align-items-start flex-wrap">
@@ -30,6 +31,9 @@
                             height="30"></button>
                 </div>
         </main>
+        <div class="hideonboard userid">
+            <%= currentUser._id %>
+        </div>
 
         <script src="/javascripts/bootstrapJS/bootstrap.bundle.min.js"></script>
         <script src="/javascripts/addSnippet.js"></script>
