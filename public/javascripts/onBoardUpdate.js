@@ -14,6 +14,7 @@ addNoteButton.addEventListener("click", () => {
     // Create the top that contains the delete button for the note
     let noteTop = document.createElement("div");
     noteTop.classList.add("notetop");
+    noteTop.classList.add("d-flex");
     let deleteNoteButton = document.createElement("button");
     deleteNoteButton.classList.add("transparentbutton");
     deleteNoteButton.classList.add("deletenote");
@@ -21,6 +22,10 @@ addNoteButton.addEventListener("click", () => {
     deleteNoteButton.addEventListener("click", () => {
         deleteNoteButton.parentElement.parentElement.remove();
     });
+    let noteTitle = document.createElement("div");
+    noteTitle.classList.add("notetitle");
+    noteTitle.contentEditable = true;
+    noteTop.append(noteTitle);
     noteTop.append(deleteNoteButton);
 
     // Create initial snippet in the note
@@ -72,3 +77,4 @@ boardNameInput.addEventListener("focusout", (event) => {
 //         });
 //     });
 // });
+
