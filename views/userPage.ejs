@@ -19,11 +19,30 @@
             <%- include("./partials/flash") %>
                 <div class="boardname">
                     <input type="text" name="boardnametext" class="boardnameinput" placeholder="Untitled board"
-                        value="<%-userInfo.boardName %>">
+                        value="<%-userInfo.boardName%>">
                 </div>
 
                 <div class="board d-flex align-items-start flex-wrap">
-                    <button class="addnote">+</button>
+                    <% for (let i=0; i < userInfo.notes.length; i++) {%>
+                        <div class="note shadow" id="<%-(" i"+userInfo.ids[i]).trim()%>">
+                            <div class="notetop d-flex">
+                                <div class="notetitle" contenteditable="true">
+                                    <%= userInfo.notes[i].snippets[0] %>
+                                </div>
+                                <button class="transparentbutton deletenote">&times;</button>
+                            </div>
+                            <% for (let j=1; j < userInfo.notes[i].snippets.length; j++) {%>
+                                <div class="snippet d-flex align-content-start">
+                                    <div class="snippetinput" contenteditable="true">
+                                        <%= userInfo.notes[i].snippets[j] %>
+                                    </div>
+                                    <button class="transparentbutton deletesnippet">&times;</button>
+                                </div>
+                                <% } %>
+                                    <button class="transparentbutton addnewsnippet">+</button>
+                        </div>
+                        <% } %>
+                            <button class="addnote">+</button>
                 </div>
 
                 <div class="trashrow hideonboard">
@@ -32,11 +51,10 @@
                 </div>
         </main>
         <div class="hideonboard userid">
-            <%= currentUser._id %>
+            <%=currentUser._id%>
         </div>
 
         <script src="/javascripts/bootstrapJS/bootstrap.bundle.min.js"></script>
-        <script src="/javascripts/onBoardLoad.js"></script>
         <script src="/javascripts/onBoardUpdate.js"></script>
         <script src="/javascripts/boardHelpers.js"></script>
 </body>

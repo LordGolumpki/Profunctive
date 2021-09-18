@@ -1,15 +1,15 @@
 // Helper function that creates snippets
 function createSnippet() {
-    let snippet = document.createElement("div");
+    const snippet = document.createElement("div");
     snippet.classList.add("snippet");
     snippet.classList.add("d-flex");
     snippet.classList.add("align-content-start");
 
-    let snippetInput = document.createElement("div");
+    const snippetInput = document.createElement("div");
     snippetInput.classList.add("snippetinput");
     snippetInput.contentEditable = true;
 
-    let deleteSnippet = document.createElement("button");
+    const deleteSnippet = document.createElement("button");
     deleteSnippet.classList.add("transparentbutton");
     deleteSnippet.classList.add("deletesnippet");
     deleteSnippet.innerHTML = "&times;"
@@ -22,3 +22,21 @@ function createSnippet() {
 
     return snippet
 };
+
+function getSnippets(noteId) {
+    const note = document.querySelector(`#${noteId}`);
+    const snippets = [];
+    note.childNodes.forEach((child) => {
+        if (child.tagName == "DIV" && child.classList.contains("notetop"))
+            child.childNodes.forEach((grandChild) => {
+                if (grandChild.tagName == "DIV" && grandChild.classList.contains("notetitle"))
+                    snippets.push(grandChild.innerText);
+            });
+        if (child.tagName == "DIV" && child.classList.contains("snippet"))
+            child.childNodes.forEach((grandChild) => {
+                if (grandChild.tagName == "DIV" && grandChild.classList.contains("snippetinput"))
+                    snippets.push(grandChild.innerText);
+            });
+    });
+    return snippets;
+}

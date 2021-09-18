@@ -122,9 +122,11 @@ app.post("/signup", catchAsync(userController.signUp));
 // User board routes
 app.get("/board", isSignedIn, catchAsync(boardController.renderBoard));
 
-app.post("/board/:id/name", catchAsync(boardController.updateBoardName));
+app.post("/board/name/:id", catchAsync(boardController.updateBoardName));
 
-app.post("/board/:id/note", catchAsync(boardController.updateNotes));
+app.post("/board/note/:id", catchAsync(boardController.updateNotes));
+
+app.post("/board/newnote/:id", catchAsync(boardController.createNote))
 
 // Catch route errors
 app.all("*", (req, res, next) => {
@@ -134,7 +136,8 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
     if (!err.message) err.message = "Uh oh, something went wrong!";
-    res.status(statusCode).render("Error", { err });
+    //res.status(statusCode).render("Error", { err });
+    res.send(err.message);
 });
 
 // Start listener
