@@ -35,6 +35,15 @@ addNoteButton.addEventListener("click", async () => {
     deleteNoteButton.classList.add("deletenote");
     deleteNoteButton.innerHTML = "&times;";
     deleteNoteButton.addEventListener("click", () => {
+        fetch(`/board/deletenote/${userId}`, {
+            method: "POST",
+            body: JSON.stringify({
+                note: noteId
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
         deleteNoteButton.parentElement.parentElement.remove();
     });
     const noteTitle = document.createElement("div");
@@ -42,8 +51,7 @@ addNoteButton.addEventListener("click", async () => {
     noteTitle.contentEditable = true;
     noteTitle.addEventListener("focusout", (event) => {
         const snippetsArr = getSnippets("i" + noteId);
-        console.log(snippetsArr)
-        fetch(`/board/note/${userId}`, {
+        fetch(`/board/updatenote/${userId}`, {
             method: "POST",
             body: JSON.stringify({
                 note: noteId,
@@ -61,8 +69,7 @@ addNoteButton.addEventListener("click", async () => {
     const snippet = createSnippet();
     snippet.addEventListener("focusout", (event) => {
         const snippetsArr = getSnippets("i" + noteId);
-        console.log(snippetsArr)
-        fetch(`/board/note/${userId}`, {
+        fetch(`/board/updatenote/${userId}`, {
             method: "POST",
             body: JSON.stringify({
                 note: noteId,
@@ -83,8 +90,7 @@ addNoteButton.addEventListener("click", async () => {
         const snippet = createSnippet();
         snippet.addEventListener("focusout", (event) => {
             const snippetsArr = getSnippets("i" + noteId);
-            console.log(snippetsArr)
-            fetch(`/board/note/${userId}`, {
+            fetch(`/board/updatenote/${userId}`, {
                 method: "POST",
                 body: JSON.stringify({
                     note: noteId,
@@ -109,7 +115,7 @@ addNoteButton.addEventListener("click", async () => {
 
 // Add listener to send board name updates to server
 boardNameInput.addEventListener("focusout", (event) => {
-    fetch(`/board/name/${userId}`, {
+    fetch(`/board/updatename/${userId}`, {
         method: "POST",
         body: JSON.stringify({
             newBoardName: boardNameInput.value
@@ -125,8 +131,7 @@ noteTitles.forEach((noteTitle) => {
     noteTitle.addEventListener("focusout", (event) => {
         const noteId = noteTitle.parentElement.parentElement.id.substring(1);
         const snippetsArr = getSnippets("i" + noteId);
-        console.log(snippetsArr)
-        fetch(`/board/note/${userId}`, {
+        fetch(`/board/updatenote/${userId}`, {
             method: "POST",
             body: JSON.stringify({
                 note: noteId,
@@ -144,8 +149,7 @@ snippets.forEach((snippet) => {
     snippet.addEventListener("focusout", (event) => {
         const noteId = snippet.parentElement.id.substring(1);
         const snippetsArr = getSnippets("i" + noteId);
-        console.log(snippetsArr)
-        fetch(`/board/note/${userId}`, {
+        fetch(`/board/updatenote/${userId}`, {
             method: "POST",
             body: JSON.stringify({
                 note: noteId,
@@ -165,8 +169,7 @@ addSnippetButtons.forEach((addSnippetButton) => {
         const snippet = createSnippet();
         snippet.addEventListener("focusout", (event) => {
             const snippetsArr = getSnippets("i" + noteId);
-            console.log(snippetsArr)
-            fetch(`/board/note/${userId}`, {
+            fetch(`/board/updatenote/${userId}`, {
                 method: "POST",
                 body: JSON.stringify({
                     note: noteId,
@@ -184,6 +187,16 @@ addSnippetButtons.forEach((addSnippetButton) => {
 // Add listener to each existing delete note button
 deleteNoteButtons.forEach((deleteNoteButton) => {
     deleteNoteButton.addEventListener("click", (event) => {
+        const noteId = deleteNoteButton.parentElement.parentElement.id.substring(1);
+        fetch(`/board/deletenote/${userId}`, {
+            method: "POST",
+            body: JSON.stringify({
+                note: noteId
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
         deleteNoteButton.parentElement.parentElement.remove();
     });
 });
@@ -191,6 +204,18 @@ deleteNoteButtons.forEach((deleteNoteButton) => {
 // Add listener to each existing delete snippet button
 deleteSnippetButtons.forEach((deleteSnippetButton) => {
     deleteSnippetButton.addEventListener("click", (event) => {
+        const noteId = deleteSnippetButton.parentElement.parentElement.id.substring(1);
         deleteSnippetButton.parentElement.remove();
+        const snippetsArr = getSnippets("i" + noteId);
+        fetch(`/board/updatenote/${userId}`, {
+            method: "POST",
+            body: JSON.stringify({
+                note: noteId,
+                snippets: snippetsArr
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
     });
 });

@@ -1,6 +1,6 @@
 /**
  * Author: Ivan Jones
- * Version: 9/15/21
+ * Version: 9/18/21
  */
 
 // Require .env variables if in development
@@ -122,11 +122,13 @@ app.post("/signup", catchAsync(userController.signUp));
 // User board routes
 app.get("/board", isSignedIn, catchAsync(boardController.renderBoard));
 
-app.post("/board/name/:id", catchAsync(boardController.updateBoardName));
+app.post("/board/updatename/:id", catchAsync(boardController.updateBoardName));
 
-app.post("/board/note/:id", catchAsync(boardController.updateNotes));
+app.post("/board/updatenote/:id", catchAsync(boardController.updateNotes));
 
-app.post("/board/newnote/:id", catchAsync(boardController.createNote))
+app.post("/board/newnote/:id", catchAsync(boardController.createNote));
+
+app.post("/board/deletenote/:id", catchAsync(boardController.deleteNote));
 
 // Catch route errors
 app.all("*", (req, res, next) => {
@@ -135,7 +137,8 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
-    if (!err.message) err.message = "Uh oh, something went wrong!";
+    if (!err.message)
+        err.message = "Uh oh, something went wrong!";
     //res.status(statusCode).render("Error", { err });
     res.send(err.message);
 });

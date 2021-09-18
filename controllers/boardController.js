@@ -37,7 +37,7 @@ module.exports.createNote = async (req, res, next) => {
         const id = req.user.id;
         const user = await User.findById(id);
         user.notes.push(note._id);
-        user.save();
+        await user.save();
         res.json({ id: note._id });
     } catch (e) {
         console.log(e.message);
@@ -50,6 +50,17 @@ module.exports.updateNotes = async (req, res, next) => {
         const newSnippets = req.body.snippets;
         const note = await Note.findByIdAndUpdate(noteId, { snippets: newSnippets });
         await note.save();
+    } catch (e) {
+        console.log(e.message);
+    }
+}
+
+module.exports.deleteNote = async (req, res, next) => {
+    try {
+        const id = req.user.id;
+        const noteId = req.body.note;
+        await User.findOneAndUpdate(id, { $pull: { notes: noteId } });
+        await Note.findByIdAndRemove(noteId);
     } catch (e) {
         console.log(e.message);
     }
