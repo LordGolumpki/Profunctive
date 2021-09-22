@@ -14,7 +14,22 @@ function createSnippet() {
     deleteSnippet.classList.add("deletesnippet");
     deleteSnippet.innerHTML = "&times;"
     deleteSnippet.addEventListener("click", (event) => {
-        deleteSnippet.parentElement.remove();
+        deleteSnippet.parentElement.classList.toggle("fade");
+        const noteId = deleteSnippet.parentElement.parentElement.id.substring(1);
+        setTimeout(() => {
+            deleteSnippet.parentElement.remove();
+            const snippetsArr = getSnippets("i" + noteId);
+            fetch(`/board/updatenote/${userId}`, {
+                method: "POST",
+                body: JSON.stringify({
+                    note: noteId,
+                    snippets: snippetsArr
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+        }, 500);
     });
 
     snippet.append(snippetInput);

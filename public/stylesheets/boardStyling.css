@@ -5,6 +5,7 @@
 
 .boardnameinput:hover {
     color: #98c1d9;
+    transition: 0.25s;
 }
 
 .boardnameinput, .boardnameinput:focus {
@@ -31,6 +32,7 @@
 
 .trashbutton:hover {
     background-color: darkgrey;
+    transition: 0.25s;
 }
 
 .note {
@@ -38,7 +40,8 @@
     border-radius: 12px;
     min-height: 225px;
     width: 205px;
-    margin: 25px;
+    margin: 12.5px;
+    transition: 0.45s ease-in-out;
 }
 
 .addnote {
@@ -48,7 +51,7 @@
     border-radius: 12px;
     min-height: 225px;
     width: 205px;
-    margin: 25px;
+    margin: 12.5px;
     font-size: 5em;
     font-weight: 100;
 }
@@ -56,6 +59,7 @@
 .addnote:hover {
     color: gray;
     border-color: gray;
+    transition: 0.25s;
 }
 
 .deletenote {
@@ -77,6 +81,7 @@
 
 .transparentbutton:hover {
     color: #f95738;
+    transition: 0.25s;
 }
 
 .snippet {
@@ -106,6 +111,7 @@
 .snippetinput:hover {
     border-bottom: solid #98c1d9;
     color: #98c1d9;
+    transition: 0.25s;
 }
 
 .snippetinput:focus {
@@ -138,6 +144,7 @@
 .notetitle:hover {
     border-bottom: solid #98c1d9;
     color: #98c1d9;
+    transition: 0.25s;
 }
 
 .notetitle:focus {
@@ -145,4 +152,12 @@
     color: black;
     border-radius: 2px;
     outline: none;
+}
+
+.fade {
+    opacity: 0%;    
+}
+
+.aparate {
+    opacity: 100% !important;
 }

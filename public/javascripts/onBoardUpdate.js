@@ -34,7 +34,9 @@ addNoteButton.addEventListener("click", async () => {
     deleteNoteButton.classList.add("transparentbutton");
     deleteNoteButton.classList.add("deletenote");
     deleteNoteButton.innerHTML = "&times;";
-    deleteNoteButton.addEventListener("click", () => {
+    deleteNoteButton.addEventListener("click", (event) => {
+        deleteNoteButton.parentElement.parentElement.classList.toggle("fade");
+        const noteId = deleteNoteButton.parentElement.parentElement.id.substring(1);
         fetch(`/board/deletenote/${userId}`, {
             method: "POST",
             body: JSON.stringify({
@@ -44,7 +46,7 @@ addNoteButton.addEventListener("click", async () => {
                 "Content-Type": "application/json"
             }
         });
-        deleteNoteButton.parentElement.parentElement.remove();
+        setTimeout(() => { deleteNoteButton.parentElement.parentElement.remove(); }, 500);
     });
     const noteTitle = document.createElement("div");
     noteTitle.classList.add("notetitle");
@@ -187,6 +189,7 @@ addSnippetButtons.forEach((addSnippetButton) => {
 // Add listener to each existing delete note button
 deleteNoteButtons.forEach((deleteNoteButton) => {
     deleteNoteButton.addEventListener("click", (event) => {
+        deleteNoteButton.parentElement.parentElement.classList.toggle("fade");
         const noteId = deleteNoteButton.parentElement.parentElement.id.substring(1);
         fetch(`/board/deletenote/${userId}`, {
             method: "POST",
@@ -197,25 +200,28 @@ deleteNoteButtons.forEach((deleteNoteButton) => {
                 "Content-Type": "application/json"
             }
         });
-        deleteNoteButton.parentElement.parentElement.remove();
+        setTimeout(() => { deleteNoteButton.parentElement.parentElement.remove(); }, 500);
     });
 });
 
 // Add listener to each existing delete snippet button
 deleteSnippetButtons.forEach((deleteSnippetButton) => {
     deleteSnippetButton.addEventListener("click", (event) => {
+        deleteSnippetButton.parentElement.classList.toggle("fade");
         const noteId = deleteSnippetButton.parentElement.parentElement.id.substring(1);
-        deleteSnippetButton.parentElement.remove();
-        const snippetsArr = getSnippets("i" + noteId);
-        fetch(`/board/updatenote/${userId}`, {
-            method: "POST",
-            body: JSON.stringify({
-                note: noteId,
-                snippets: snippetsArr
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
+        setTimeout(() => {
+            deleteSnippetButton.parentElement.remove();
+            const snippetsArr = getSnippets("i" + noteId);
+            fetch(`/board/updatenote/${userId}`, {
+                method: "POST",
+                body: JSON.stringify({
+                    note: noteId,
+                    snippets: snippetsArr
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+        }, 500);
     });
 });
