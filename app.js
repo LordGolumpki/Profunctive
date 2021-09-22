@@ -135,12 +135,12 @@ app.all("*", (req, res, next) => {
     next(new ExpressError("Page Not Found", 404));
 });
 
+// Serve error page
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
     if (!err.message)
         err.message = "Uh oh, something went wrong!";
-    //res.status(statusCode).render("Error", { err });
-    res.send(err.message);
+    res.status(statusCode).render("error", { err, statusCode });
 });
 
 // Start listener
