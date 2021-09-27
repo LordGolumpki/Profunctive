@@ -24,10 +24,10 @@ const extension = (joi) => ({
 const Joi = BaseJoi.extend(extension)
 
 module.exports.boardNameSchema = Joi.object({
-    newBoardName: Joi.string().escapeHTML().required()
+    newBoardName: Joi.string().escapeHTML().allow("")
 });
 
 module.exports.noteSchema = Joi.object({
-    note: Joi.string().escapeHTML().required(),
-    snippets: Joi.array().escapeHTML().requred()
+    note: Joi.string().escapeHTML().allow(""),
+    snippets: Joi.array().items(Joi.string().escapeHTML().allow(""))
 });

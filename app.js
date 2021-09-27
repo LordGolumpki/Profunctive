@@ -25,6 +25,7 @@ const ExpressError = require("./utils/ExpressError");
 const UserModel = require("./models/userModel");
 const userController = require("./controllers/userController");
 const boardController = require("./controllers/boardController");
+const middleware = require("./utils/middleware");
 
 // Define instance variables
 const port = process.env.PORT || 8080;
@@ -91,15 +92,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Temp location
-isSignedIn = (req, res, next) => {
-    if (!req.isAuthenticated()) {
-        req.flash('error', 'You must be signed in first!');
-        return res.redirect('/signin');
-    }
-    next();
-}
-
 // Define routes
 // Home route
 app.get("/", (req, res) => {
@@ -120,11 +112,11 @@ app.get("/signup", userController.renderSignUp);
 app.post("/signup", catchAsync(userController.signUp));
 
 // User board routes
-app.get("/board", isSignedIn, catchAsync(boardController.renderBoard));
+app.get("/board", middleware.isSignedIn, catchAsync(boardController.renderBoard));
 
-app.post("/board/updatename/:id", catchAsync(boardController.updateBoardName));
+app.post("/board/updatename/:id", middleware.validateBoardName, catchAsync(boardController.updateBoardName));
 
-app.post("/board/updatenote/:id", catchAsync(boardController.updateNotes));
+app.post("/board/updatenote/:id", middleware.validateNote, catchAsync(boardController.updateNotes));
 
 app.post("/board/newnote/:id", catchAsync(boardController.createNote));
 
@@ -135,8 +127,9 @@ app.all("*", (req, res, next) => {
     next(new ExpressError("Page Not Found", 404));
 });
 
-// Serve error page
+// Server error page
 app.use((err, req, res, next) => {
+    console.log("entered")
     const { statusCode = 500 } = err;
     if (!err.message)
         err.message = "Uh oh, something went wrong!";
