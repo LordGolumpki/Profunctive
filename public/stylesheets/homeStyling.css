@@ -1,0 +1,22 @@
+.container {
+    color: #091e42;
+}
+
+img {
+    width: 30%;
+    display: inline-block;
+}
+
+.tutorial {
+    width: 50%;
+    display: inline-block;
+}
+
+.container.border {
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.underline {
+    border-bottom: solid #091e42 1px;
+}
