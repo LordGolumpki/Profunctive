@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profunctive</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrapCSS/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/navbarStyling.css">
+    <link rel="stylesheet" href="/stylesheets/boardStyling.css">
+    <link rel="stylesheet" href="/stylesheets/footerStyling.css">
+    <link rel="icon" href="/resources/profunctiveIcon.svg">
+</head>
+
+<body>
+    <%- include('./partials/navbar')%>
+        <main>
+            <%- include("./partials/flash") %>
+                <div class="boardname">
+                    <input type="text" name="boardnametext" class="boardnameinput" placeholder="Untitled board">
+                </div>
+
+                <div class="board d-flex align-items-start justify-content-center flex-wrap">
+                    <div class="note shadow">
+                        <div class="notetop d-flex">
+                            <div class="notetitle" contenteditable="true"></div>
+                            <button class="transparentbutton deletenote">&times;</button>
+                        </div>
+                        <div class="snippet d-flex align-content-start">
+                            <div class="snippetinput" contenteditable="true"></div>
+                            <button class="transparentbutton deletesnippet">&times;</button>
+                        </div>
+                        <button class="transparentbutton addnewsnippet">+</button>
+                    </div>
+
+                    <button class="addnote">+</button>
+                </div>
+
+                <div class="trashrow hideonboard">
+                    <button class="trashbutton"><img src="/resources/trashCan.svg" alt="" width="30"
+                            height="30"></button>
+                </div>
+        </main>
+
+        <script src="/javascripts/bootstrapJS/bootstrap.bundle.min.js"></script>
+        <script src="/javascripts/demoEvents.js"></script>
+</body>
+
+<%- include('./partials/footer')%>
+
+</html>

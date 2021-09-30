@@ -12,6 +12,10 @@ module.exports.updateBoardName = async (req, res, next) => {
     }
 }
 
+module.exports.renderDemo = (req, res, next) => {
+    res.render("demo.ejs");
+}
+
 module.exports.renderBoard = async (req, res, next) => {
     try {
         const id = req.user.id;

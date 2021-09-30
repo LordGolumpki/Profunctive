@@ -112,6 +112,8 @@ app.get("/signup", userController.renderSignUp);
 app.post("/signup", catchAsync(userController.signUp));
 
 // User board routes
+app.get("/demo", boardController.renderDemo);
+
 app.get("/board", middleware.isSignedIn, catchAsync(boardController.renderBoard));
 
 app.post("/board/updatename/:id", middleware.validateBoardName, catchAsync(boardController.updateBoardName));
