@@ -38,6 +38,7 @@ function createSnippet() {
     return snippet
 };
 
+// Helper function that retrieves note data from board
 function getSnippets(noteId) {
     const note = document.querySelector(`#${noteId}`);
     const snippets = [];

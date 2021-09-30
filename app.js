@@ -1,6 +1,6 @@
 /**
  * Author: Ivan Jones
- * Version: 9/18/21
+ * Version: 9/29/21
  */
 
 // Require .env variables if in development
@@ -8,7 +8,6 @@ if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
 }
 
-// Import external modules
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -19,7 +18,6 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
-// Import internal modules
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const UserModel = require("./models/userModel");
@@ -138,7 +136,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error", { err, statusCode });
 });
 
-// Start listener
 app.listen(port, () => {
     console.log(`Serving on port: ${port}`);
 });

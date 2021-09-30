@@ -1,8 +1,6 @@
-// Import external modules
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 
-// Define user schema
 const UserSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -16,8 +14,7 @@ const UserSchema = new mongoose.Schema({
     }]
 });
 
-// Apply passport password functionality to the schema
+// Apply passport password functionality and security
 UserSchema.plugin(passportLocalMongoose);
 
-// Export schema
 module.exports = mongoose.model("User", UserSchema);

@@ -8,7 +8,7 @@ module.exports.updateBoardName = async (req, res, next) => {
         const user = await User.findByIdAndUpdate(id, { boardName: newBoardName });
         await user.save();
     } catch (e) {
-        console.log(e.message);
+        console.log(e);
     }
 }
 
