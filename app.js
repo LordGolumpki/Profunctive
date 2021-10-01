@@ -34,7 +34,7 @@ const secret = process.env.SECRET || "mangopanda";
 // Configure session settings
 const store = MongoStore.create({
     mongoUrl: dbUrl,
-    secret: secret,
+    secret,
     touchAfter: 24 * 60 * 60,
 });
 
