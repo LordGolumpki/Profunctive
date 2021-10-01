@@ -17,6 +17,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const MongoStore = require("connect-mongo");
 
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
@@ -26,10 +27,23 @@ const boardController = require("./controllers/boardController");
 const middleware = require("./utils/middleware");
 
 // Define instance variables
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5000;
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/profunctive";
 const secret = process.env.SECRET || "mangopanda";
+
+// Configure session settings
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    secret: secret,
+    touchAfter: 24 * 60 * 60,
+});
+
+store.on("error", (e) => {
+    console.log("Session store error", e);
+});
+
 const sessionConfig = {
+    store,
     name: "session",
     secret,
     resave: false,
@@ -45,7 +59,8 @@ const sessionConfig = {
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 const db = mongoose.connection;
