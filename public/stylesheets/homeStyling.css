@@ -13,10 +13,6 @@ img {
 }
 
 .container.border {
-    border-radius: 10px;
-    margin-bottom: 40px;
-}
-
-.underline {
-    border-bottom: solid #091e42 1px;
+    border-radius: 0.8rem;
+    margin-bottom: 3.2rem;
 }
